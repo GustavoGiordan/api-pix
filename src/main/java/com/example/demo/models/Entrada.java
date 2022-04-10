@@ -19,6 +19,22 @@ public class Entrada {
 	private String sobrenome;
 
 
+	
+
+	public Entrada(String uuid, String chave, String valorChave, String tipoConta, Long agencia, Long conta,
+			String nome, String sobrenome) {
+		this.uuid = uuid;
+		this.chave = chave;
+		this.valorChave = valorChave;
+		this.tipoConta = tipoConta;
+		this.agencia = agencia;
+		this.conta = conta;
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+	}
+
+	public Entrada(){}
+
 	public String getUuid() {
 		return uuid;
 	}

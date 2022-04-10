@@ -49,13 +49,9 @@ public class Util {
         } else if(entrada.getTipoConta().length() > 10){
             saida.cadastrar("Tipo de conta não deve ultrapassar 10 caracteres!", 422);
             return saida;
-        } else if(!entrada.getTipoConta().contains("Poupanca") && !entrada.getTipoConta().contains("Corrente") 
-            && !entrada.getTipoConta().contains("poupanca") && !entrada.getTipoConta().contains("corrente")){
-            saida.cadastrar("Tipo de conta deve ser corrente ou Poupança!", 422);
-            return saida;
         } 
 
-		
+	
 		if(entrada.getChave().equalsIgnoreCase("celular")) {
 			if(!entrada.getValorChave().startsWith("+") || !entrada.getValorChave().matches("[+-]?\\d*(\\.\\d+)?") 
 					|| entrada.getValorChave().length() > 14 || entrada.getValorChave().length() < 13) {
@@ -128,11 +124,7 @@ public class Util {
         } else if(entrada.getTipoConta().length() > 10){
             saida.cadastrar("Tipo de conta não deve ultrapassar 10 caracteres!", 422);
             return saida;
-        } else if(!entrada.getTipoConta().contains("Poupanca") && !entrada.getTipoConta().contains("Corrente") 
-            && !entrada.getTipoConta().contains("poupanca") && !entrada.getTipoConta().contains("corrente")){
-            saida.cadastrar("Tipo de conta deve ser corrente ou Poupança!", 422);
-            return saida;
-        }
+        } 
 		
 		return saida;		
 	}

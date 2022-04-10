@@ -18,9 +18,11 @@ import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -68,7 +70,7 @@ public class ChaveResource {
 	
 	@PostMapping("/salvar")
 	public ResponseEntity salvaChave(@RequestBody Entrada entrada) {
-		
+
 		Saida saida = Util.validaCamposChave(entrada);
 		
 		if(saida.getHttpCode() == 200){
@@ -80,7 +82,7 @@ public class ChaveResource {
 		        .body(saida.getMensagem());		
 	}
 
-	@PostMapping("/alterar")
+	@PutMapping("/alterar")
 	public ResponseEntity alteraChave(@RequestBody Entrada entrada) {
 		
 		Saida saida = Util.validaCamposAlteracao(entrada);
@@ -93,7 +95,7 @@ public class ChaveResource {
 		        .body(saida.getMensagem());		
 	}
 
-	@PostMapping("/inativar")
+	@DeleteMapping("/inativar")
 	public ResponseEntity inativaChave(@RequestBody Entrada entrada) {
 		
 		Saida saida = Util.validaCamposInativacao(entrada);
@@ -138,8 +140,6 @@ public class ChaveResource {
 		}
 
 		Chave chave = chaveRepository.findByValorChave(entrada.getValorChave());
-
-		System.out.println("Chave = " +chave);
 		if(chave != null){
 			saida.cadastrar("Chave já cadastrada!", 422);
 			return saida;
